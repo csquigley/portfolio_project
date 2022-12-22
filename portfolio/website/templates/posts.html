@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block title%}Posts{%endblock%}
+{%block content%}
+<div class="container mt-5">
+    <div class="row">
+      {% for object in object_list %}
+        <div class="col-4">
+          <div class="card mb-3">
+            {% if object.image_url %}
+              <img src="{{object.image_url.url}}" class="card-img-top" alt="giant cat">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ object.title }}</h5>
+              <p class="card-text">{{ object.content }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{%endblock%}
+
