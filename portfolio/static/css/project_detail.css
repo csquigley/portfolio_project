@@ -1,0 +1,17 @@
+
+.a-tag-no-style {
+    text-decoration: none;
+    color: #212529;
+}
+.a-tag-no-style:hover {
+        text-decoration: none;
+        color: rgb(0 0 0 / 55%);
+    }
+
+.mt-1 {
+    margin-bottom: 25px;
+}
+
+.mb-1 {
+    margin-bottom: 100px;
+}
