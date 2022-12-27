@@ -1,10 +1,28 @@
 {% extends 'base.html'%}
+{%load static%}
 
+{%block head%} <link rel="stylesheet" href="{% static 'css/pygment.css'%}">{%endblock%}
 {%block title%} {{object.title}} {%endblock%}
 
 {%block content%} 
+
 <h1>{{object.title}}</h1>
 <p>{{object.content}}</p>
+<div class="container-sm">{{object.code_snippet|safe}}</div>
+<a class="btn btn-primary float-left" href="{{object.github_url}}">See Github Repo</a>
 
+{% if sections %}
+{% for section in sections %}
 
+    {% if section.section_template == 'IL' %}
+    {% include 'subtemplates/image_left.html' with object=section%}
+    {% elif section.section_template == 'IR'%}
+    {% include 'subtemplates/image_right.html' with object=section%}
+    {% elif section.section_template == 'CF'%}
+    <p>This hasn't been implemented yet</p>
+    {% else %}
+    <p>couldn't find anything</p>
+    {%endif%}
+{%endfor%}
+{%endif%}
 {%endblock%}

@@ -1,0 +1,19 @@
+<div class="row align-items-start">
+    <div class="col-6 ">
+        <!-- text content goes here -->
+        <p>{{object.content}}</p>
+    </div>
+    <div class="col-6">
+        {%if object.image_url%}
+        <figure class="figure">
+            <img src="{{object.image_url.url}}" class="figure-img img-fluid rounded" alt="...">
+            <figcaption class="figure-caption">{{object.image_description}}</figcaption>
+        </figure>
+        {%else%}
+        <figure class="figure">
+            <img src="" class="figure-img img-fluid rounded" alt="...">
+            <figcaption class="figure-caption">You haven't uploaded an image yet</figcaption>
+        {%endif%}
+
+    </div>
+</div>
