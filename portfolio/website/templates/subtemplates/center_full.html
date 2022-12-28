@@ -1,0 +1,34 @@
+
+<div class="row align-items-start mt-5">
+
+    <div class="col-2"></div>
+
+    <div class="col-8">
+        {%if object.image_url%}
+        <div class="d-flex justify-content-center">
+            <figure class="figure w-50">
+                <img src="{{object.image_url.url}}" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">{{object.image_description}}</figcaption>
+            </figure>
+        </div>
+
+        {%else%}
+        <figure class="figure">
+            <img src="" class="figure-img img-fluid rounded" alt="...">
+            <figcaption class="figure-caption">You haven't uploaded an image yet</figcaption>
+        {%endif%}
+    </div>
+
+    <div class="col-2"></div>
+
+
+</div>
+<div class="row align-items-start mt-2">
+    <div class="col-1"></div>
+    <div class="col-10">
+    
+             <h3>{{object.subtitle}}</h3>
+            <p class="">{{object.content}}</p>
+    </div>
+    <div class="col-1"></div>
+</div>

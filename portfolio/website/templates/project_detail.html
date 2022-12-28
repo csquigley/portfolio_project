@@ -5,11 +5,11 @@
 {%block title%} {{object.title}} {%endblock%}
 
 {%block content%} 
+<div class="flex justify-content"><h1>{{object.title}} </h1>
+    <p>{{object.content}}</p></div>
 
-<h1>{{object.title}}</h1>
-<p>{{object.content}}</p>
 <div class="container-sm">{{object.code_snippet|safe}}</div>
-<a class="btn btn-primary float-left" href="{{object.github_url}}">See Github Repo</a>
+
 
 {% if sections %}
 {% for section in sections %}
@@ -19,10 +19,15 @@
     {% elif section.section_template == 'IR'%}
     {% include 'subtemplates/image_right.html' with object=section%}
     {% elif section.section_template == 'CF'%}
-    <p>This hasn't been implemented yet</p>
+    {% include 'subtemplates/center_full.html' with object=section%}
+    {% elif section.section_template == 'CD'%}
+    {% include 'subtemplates/code.html' with object=section%}
     {% else %}
     <p>couldn't find anything</p>
     {%endif%}
 {%endfor%}
 {%endif%}
+
+<a class="btn btn-primary" href="{{object.github_url}}">See Github Repo</a>
+
 {%endblock%}

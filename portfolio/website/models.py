@@ -29,27 +29,22 @@ class Project(models.Model):
 
 
 #project subsections will have different styling depending on the type
-SECTION_TYPES = {
-    ('opt1','image_section'),
-    ('opt2','text_section'),
-    ('opt3','code_section'),
-    ('opt4','sub_section'),
-    ('opt5','html_section'),
-}
+
 #each of these will be associated with a different section template
 #allowing for more options to organize project posts
-SECTION_TEMPLATES = {
+SECTION_TEMPLATES = [
     ('CF','CONTENT_FULL'),
     ('IR','IMAGE_RIGHT'),
     ('IL','IMAGE_LEFT'),
-}
+    ('TX','PURE_TEXT'),
+    ('CD','PURE_CODE'),
+    ('HT','PURE_HTML'),
+]
 
 class ProjectSection(models.Model):
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
-    section_type = models.CharField(max_length=4,choices=SECTION_TYPES,default='opt1',null=False,blank=False)
     section_template = models.CharField(max_length=2,choices=SECTION_TEMPLATES,default='CF',null=False,blank=False)
     subtitle = models.CharField(max_length=200,blank=True)
-
     content = models.TextField(blank=True)
     #if content is html you can disply it raw and apply your own CSS
     content_is_html = models.BooleanField(default=False,verbose_name='Already HTML?')
