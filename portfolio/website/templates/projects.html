@@ -1,5 +1,7 @@
 {%extends 'base.html'%}
 {%load static%}
+{% block title%} Chris' Projects{%endblock%}
+
 
 {%block head%}
 
@@ -10,26 +12,36 @@
 {%endblock%}
 
 {% block content %}
-<h1 class="mb-1">Projects</h1>
 
+<div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white" height: 100vh;
+style="background-image: url('{% static "images/ai.png" %}')">
+    <h1 class="mb-1">Projects</h1>
 
-<div class="row">
-    {% for object in object_list %}
-    <div class="col-6 mt-1">
-        <a class="a-tag-no-style" href="{% url 'project_detail' pk=object.pk %}">
-            <div class="card">
-                <div class="card-body">
+    {% if object_list %}
+    <div class="row">
 
-                    <h5 class="card-title">{{object.title}}</h5>
-                    <p class="card-text text-truncate" style="max-width: 100%; overflow: hidden">{{object.content}}</p>
-                    <p class="fst-italic">click here to read more...</p>
-                   {{object.code_snippet|safe}}
+        {% for object in object_list %}
+        <div class="col-md-6 mt-1">
+            <a class="a-tag-no-style" href="{% url 'project_detail' slug=object.slug %}">
+                <div class="card">
+                    <div class="card-body">
+    
+                        <h5 class="card-title">{{object.title}}</h5>
+                        <p class="card-text text-truncate" style="max-width: 100%; overflow: hidden">{{object.content}}</p>
+                        <p class="fst-italic">click here to read more...</p>
+                       {{object.code_snippet|safe}}
+                    </div>
+                    <a class="btn btn-primary float-left" href="{{object.github_url}}">See Github Repo</a>
                 </div>
-                <a class="btn btn-primary float-left" href="{{object.github_url}}">See Github Repo</a>
-            </div>
-        </a>
+            </a>
+        </div>
+        {%endfor%}
     </div>
-    {%endfor%}
+    {%else%}
+    <p>There are no projects to display</p>
+    {%endif%}
 </div>
+
+
 
 {%endblock%}

@@ -3,23 +3,25 @@
 {%block title%} Contact {%endblock%}
 
 {%block content%}
-
-<h1>Contact Chris</h1>
+<div class="jumbotron pt-2">
+  <h1>Contact Chris</h1>
 <form method="post">
     {% csrf_token %}
     {% for field in form %}
       <div class="form-group">
 
-        <label for="exampleInputEmail1"> {{ field.label_tag }}</label>
+        <label class="" for="exampleInputEmail1"> {{ field.label_tag }}</label>
 
-        {{ field }}
+        <div class="pt-1 pb-1">{{ field }}</div>
         {% if field.help_text %}
           <small class="form-text text-muted">{{ field.help_text}}</small>
         {% endif %}
       </div>
     {% endfor %}
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
   </form>
+</div>
+
   
   
 {%endblock%}

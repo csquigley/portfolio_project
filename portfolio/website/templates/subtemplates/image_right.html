@@ -1,12 +1,12 @@
 <div class="row align-items-start">
-    <div class="col-8 ">
+    <div class="col-md-8 ">
         <!-- text content goes here -->
         <h3>{{object.subtitle}}</h3>
         <p>{{object.content}}</p>
     </div>
-    <div class="col-4">
+    <div class="col-md-4 justify-content-center">
         {%if object.image_url%}
-        <figure class="figure w-75">
+        <figure class="figure">
             <img src="{{object.image_url.url}}" class="figure-img img-fluid rounded" alt="...">
             <figcaption class="figure-caption">{{object.image_description}}</figcaption>
         </figure>

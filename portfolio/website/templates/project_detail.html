@@ -1,33 +1,42 @@
 {% extends 'base.html'%}
 {%load static%}
 
-{%block head%} <link rel="stylesheet" href="{% static 'css/pygment.css'%}">{%endblock%}
+{%block head%} 
+<link rel="stylesheet" href="{% static 'css/pygment.css'%}">
+<!-- <link rel="stylesheet" href="{% static 'css/master.css'%}"> -->
+
+{%endblock%}
 {%block title%} {{object.title}} {%endblock%}
 
 {%block content%} 
-<div class="flex justify-content"><h1>{{object.title}} </h1>
-    <p>{{object.content}}</p></div>
-
-<div class="container-sm">{{object.code_snippet|safe}}</div>
-
-
-{% if sections %}
-{% for section in sections %}
-
-    {% if section.section_template == 'IL' %}
-    {% include 'subtemplates/image_left.html' with object=section%}
-    {% elif section.section_template == 'IR'%}
-    {% include 'subtemplates/image_right.html' with object=section%}
-    {% elif section.section_template == 'CF'%}
-    {% include 'subtemplates/center_full.html' with object=section%}
-    {% elif section.section_template == 'CD'%}
-    {% include 'subtemplates/code.html' with object=section%}
-    {% else %}
-    <p>couldn't find anything</p>
+<div class="jumbotron pt-2">
+    <div class="flex justify-content"><h1>{{object.title}} </h1>
+        <p>{{object.content}} <a href="{{object.github_url}}" class="link-primary">... See Github Repo</a></p></div>
+    
+    <div class="container-sm">{{object.code_snippet|safe}}</div>
+    
+    {% if sections %}
+    {% for section in sections %}
+    
+        {% if section.section_template == 'IL' %}
+        {% include 'subtemplates/image_left.html' with object=section%}
+        {% elif section.section_template == 'IR'%}
+        {% include 'subtemplates/image_right.html' with object=section%}
+        {% elif section.section_template == 'CF'%}
+        {% include 'subtemplates/center_full.html' with object=section%}
+        {% elif section.section_template == 'CD'%}
+        {% include 'subtemplates/code.html' with object=section%}
+        {% elif section.section_template == 'TX'%}
+        {% include 'subtemplates/textonly.html' with object=section%}
+        {% else %}
+        <p>couldn't find anything</p>
+        {%endif%}
+    {%endfor%}
     {%endif%}
-{%endfor%}
-{%endif%}
-
-<a class="btn btn-primary" href="{{object.github_url}}">See Github Repo</a>
+    
+    <a class="btn btn-primary" href="{{object.github_url}}">See Github Repo</a>
+    
+</div>
 
 {%endblock%}
+

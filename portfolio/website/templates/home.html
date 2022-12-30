@@ -1,11 +1,73 @@
-{%extends "base.html"%}
+{% extends 'base.html'%}
+{%load static%}
 {%block title%} Welcome {%endblock%}
+{%block head%} 
+<link rel="stylesheet" href="{% static 'css/pygment.css'%}">
 
-
+{%endblock%}
 {%block content%}
+
+<p class="chris">Hello World</p>
 <div class="container mt-5">
-    <h1>Welcome!</h1>
-    <p>I am a passionate guy when it comes to programming, design, business, artificial intelligence, and math!</p>
-   
+
+    {% if resume %} 
+    <div class="jumbotron">
+        <h1 class="display-4">{{resume.name}} </h1>
+        <p class="lead">{%if resume.tagline%} {{resume.tagline}}  {%endif%}     <a class="btn btn-primary btn-lg p-auto" href="/" role="button">See Projects</a></p>
+
+                <p>{%if resume.highlights%} {{resume.highlights}}{%endif%}</p>
+
+        <hr class="my-4">
+    </div> 
+
+    {% if resume.sections.all %} 
+
+        {% for section in resume.sections.all %}
+
+        {% if section.image_url %}
+       <div class="">
+       {% else %}
+       <div class="jumbotron">
+        {%endif%}
+          <h1 class="display-6">{{section.title}}</h1>
+          <p>{{section.description}}</p>
+        {%if section.section_objects.all %}
+        <div class="row">
+          {%for section_object in section.section_objects.all %}
+        <div class="col-md-6" style="background-image: url('{{section.image_url.url}}')">
+            <div class="card card-width">
+                <div class="card-body">            
+                    <p class="lead">{{section_object.title}} | {{section_object.year}}</p>
+                    {%if section_object.line1 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line1}}</p>{%endif%}
+                    {%if section_object.line2 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line2}}</p> {%endif%}
+                    {%if section_object.line3 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line3}}</p> {%endif%}
+                    {%if section_object.description %}  <p class="card-text">{{section_object.description}}</p>{%endif%}
+                </div>
+            </div>            
+
+        </div>
+          {%endfor%}
+        </div>
+          {% else%}    
+
+          No section objects exist yet. Please add one. 
+          {%endif%}
+          <hr class="my-4">
+       </div>
+        {%endfor%}
+
+    {% else%}
+
+    <p>No sections exist yet. Please create a section</p>
+
+    {% endif %}
+
+    {%else%}    
+
+        <p>Error, no resume found</p>
+
+    {%endif%}
 </div>
+
+
 {%endblock%}
