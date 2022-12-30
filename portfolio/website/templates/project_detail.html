@@ -11,7 +11,7 @@
 {%block content%} 
 <div class="jumbotron pt-2">
     <div class="flex justify-content"><h1>{{object.title}} </h1>
-        <p>{{object.content}} <a href="{{object.github_url}}" class="link-primary">... See Github Repo</a></p></div>
+        <p>{{object.content}} {% if object.github_url %}<a href="{{object.github_url}}" class="link-primary">... See Github Repo</a>{%endif%}</p></div>
     
     <div class="container-sm">{{object.code_snippet|safe}}</div>
     
@@ -34,8 +34,9 @@
     {%endfor%}
     {%endif%}
     
+    {%if object.github_url %}
     <a class="btn btn-primary" href="{{object.github_url}}">See Github Repo</a>
-    
+    {%endif%}
 </div>
 
 {%endblock%}

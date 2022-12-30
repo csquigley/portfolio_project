@@ -13,8 +13,9 @@
 
 {% block content %}
 
-<div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white" height: 100vh;
-style="background-image: url('{% static "images/ai.png" %}')">
+<!-- <div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white background-image-custom" height: 100vh;
+style="background-image: url('{% static "images/ai.png" %}')"> -->
+<div class="jumbotron p-5">
     <h1 class="mb-1">Projects</h1>
 
     {% if object_list %}
@@ -24,14 +25,25 @@ style="background-image: url('{% static "images/ai.png" %}')">
         <div class="col-md-6 mt-1">
             <a class="a-tag-no-style" href="{% url 'project_detail' slug=object.slug %}">
                 <div class="card">
+                    {% if object.image_url%} 
+                    <img class="card-img-top" src="{{object.image_url.url}}" alt="Card image cap">
                     <div class="card-body">
-    
+                    {% else %}
+                    <div class="card-body">
+
+                        <div class="code-snippet">
+                            {{object.code_snippet|safe}}
+                        </div>
+
+                        {% endif %}
                         <h5 class="card-title">{{object.title}}</h5>
                         <p class="card-text text-truncate" style="max-width: 100%; overflow: hidden">{{object.content}}</p>
                         <p class="fst-italic">click here to read more...</p>
-                       {{object.code_snippet|safe}}
+
                     </div>
+                    {% if object.github_url %}
                     <a class="btn btn-primary float-left" href="{{object.github_url}}">See Github Repo</a>
+                    {%endif%}
                 </div>
             </a>
         </div>

@@ -1,0 +1,30 @@
+.card {
+    width: 80%;
+    border-radius: 0%;
+    text-align: left;
+}
+
+/* .col-add-margin {
+    margin: 2%;
+} */
+
+.card-image-custom {
+    width: 95%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+.background-image-custom {
+    background-repeat: round;
+}
+.code-snippet {
+    text-align: left;
+}
+
+.btn-custom-lg {
+    width: 90%;
+    height: 4rem;
+    font-size: 1.5rem;
+    line-height: 3rem;
+}

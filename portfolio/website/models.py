@@ -25,7 +25,7 @@ class Project(models.Model):
     github_url = models.URLField(blank=True)
     def __str__(self):
         return f'{self.title}'
-    slug = models.CharField(max_length=200,unique=True)
+    slug = models.CharField(max_length=200,unique=True,blank=True)
 
     def save(self,*args,**kwargs):
         if not self.slug:
@@ -66,7 +66,7 @@ class ProjectSection(models.Model):
     code_snippet = models.TextField(blank=True)
     code_snippet_is_html = models.BooleanField(default=False,verbose_name='Already HTML?')
 
-    slug = models.CharField(max_length=200,unique=True)
+    slug = models.CharField(max_length=200,unique=True,blank=True)
 
     def save(self,*args,**kwargs):
         if not self.slug:

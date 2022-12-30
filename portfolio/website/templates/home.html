@@ -1,22 +1,22 @@
 {% extends 'base.html'%}
 {%load static%}
-{%block title%} Welcome {%endblock%}
+{%block title%} Chris' Resume {%endblock%}
 {%block head%} 
 <link rel="stylesheet" href="{% static 'css/pygment.css'%}">
 
 {%endblock%}
 {%block content%}
-
-<p class="chris">Hello World</p>
 <div class="container mt-5">
 
     {% if resume %} 
     <div class="jumbotron">
         <h1 class="display-4">{{resume.name}} </h1>
-        <p class="lead">{%if resume.tagline%} {{resume.tagline}}  {%endif%}     <a class="btn btn-primary btn-lg p-auto" href="/" role="button">See Projects</a></p>
-
-                <p>{%if resume.highlights%} {{resume.highlights}}{%endif%}</p>
-
+        <p class="lead">{%if resume.tagline%} {{resume.tagline}}  {%endif%}   </p>
+            <div class="row">
+                <div class="col-md-8"> <p>{%if resume.highlights%} {{resume.highlights}}{%endif%}</p></div>
+                <div class="col-md-4"><a class="btn btn-primary btn-custom-lg" href="/" role="button">See Projects</a></div>
+                <!-- <div class="col-md-4"><p>other text</p></div> -->
+            </div>
         <hr class="my-4">
     </div> 
 
@@ -34,16 +34,19 @@
         {%if section.section_objects.all %}
         <div class="row">
           {%for section_object in section.section_objects.all %}
-        <div class="col-md-6" style="background-image: url('{{section.image_url.url}}')">
-            <div class="card card-width">
-                <div class="card-body">            
-                    <p class="lead">{{section_object.title}} | {{section_object.year}}</p>
-                    {%if section_object.line1 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line1}}</p>{%endif%}
-                    {%if section_object.line2 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line2}}</p> {%endif%}
-                    {%if section_object.line3 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line3}}</p> {%endif%}
-                    {%if section_object.description %}  <p class="card-text">{{section_object.description}}</p>{%endif%}
-                </div>
-            </div>            
+        <div class="col-md-6">
+            <div class="justify-content-center card-image-custom" style="background-image: url('{{section.image_url.url}}')">
+                <div class="card">
+                    <div class="card-body">            
+                        <p class="lead">{{section_object.title}} | {{section_object.year}}</p>
+                        {%if section_object.line1 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line1}}</p>{%endif%}
+                        {%if section_object.line2 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line2}}</p> {%endif%}
+                        {%if section_object.line3 %} <p class="card-subtitle mb-1 text-muted">{{section_object.line3}}</p> {%endif%}
+                        {%if section_object.description %}  <p class="card-text">{{section_object.description}}</p>{%endif%}
+                    </div>
+                </div>    
+            </div>
+        
 
         </div>
           {%endfor%}

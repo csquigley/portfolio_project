@@ -6,7 +6,8 @@ from .models import Post, Project, ProjectSection, Resume
 from .forms import ContactForm
 from django.shortcuts import get_object_or_404
 
-
+def handler404(request, exception):
+    return render(request, '404.html')
 # Create your views here.
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -76,7 +77,7 @@ class ContactView(FormView):
         )
         
         # Render the confirmation template
-        return render(self.request, 'contact/confirmation.html')
+        return render(self.request, 'confirmation.html')
 
 
 
