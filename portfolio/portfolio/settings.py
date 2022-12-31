@@ -21,12 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = "1234512345"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['django-env.eba-viziprs3.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['djangoenv.eba-mmfdetza.us-west-2.elasticbeanstalk.com','*']
 
 
 # Application definition
@@ -107,11 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'US/Pacific'
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 

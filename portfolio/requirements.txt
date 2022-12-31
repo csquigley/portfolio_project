@@ -6,7 +6,7 @@ blessed==1.19.1
 botocore==1.23.54
 cached-property==1.5.2
 cement==2.8.2
-certifi @ file:///opt/conda/conda-bld/certifi_1655968806487/work/certifi
+certifi==2022.12.7
 cffi==1.15.1
 charset-normalizer==2.0.12
 colorama==0.4.3
@@ -20,6 +20,7 @@ docker-compose==1.25.5
 dockerpty==0.4.1
 docopt==0.6.2
 future==0.16.0
+gunicorn==20.1.0
 idna==3.4
 jmespath==0.10.0
 jsonschema==3.2.0
